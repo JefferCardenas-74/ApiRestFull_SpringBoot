@@ -8,6 +8,7 @@ import lombok.Data;
  *
  * @author Jeffer Cardenas <jecgdevp@gmail.com>
  */
+/* la interfaz serializazble se usa para poder convertir el obejeto a byte para poder enviarlo a traves de la red*/
 
 @Data
 public class UsersDTO implements Serializable {
