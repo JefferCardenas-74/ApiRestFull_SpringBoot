@@ -1,10 +1,9 @@
 
 package com.jc.apirest.services.interfaces;
 
+import com.jc.apirest.dto.UserRequest;
 import com.jc.apirest.dto.UsersDTO;
 import java.util.List;
-import java.util.Optional;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,9 +20,9 @@ public interface IUsersServices {
     
     UsersDTO findById(int user_id);
     
-    void save(UsersDTO user);
+    void save(UserRequest user);
     
-    void saveAll(List<UsersDTO> users);
+    void saveAll(List<UserRequest> users);
     
     void deleteById(int user_id);
     

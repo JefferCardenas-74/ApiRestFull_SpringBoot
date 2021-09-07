@@ -5,6 +5,8 @@
  */
 package com.jc.apirest.services.implementation;
 
+import com.ingeneo.app.utils.hash.BCrypt;
+import com.jc.apirest.dto.UserRequest;
 import com.jc.apirest.dto.UsersDTO;
 import com.jc.apirest.entities.Users;
 import com.jc.apirest.repository.UsersRepository;
@@ -70,19 +72,21 @@ public class UsersImpl implements IUsersServices{
     }
 
     @Override
-    public void save(UsersDTO user) {
+    public void save(UserRequest user) {
         
         Users users = MHelpers.modelMapper().map(user, Users.class);
+        
+        users.setPassword(BCrypt.hashpw(users.getPassword(), BCrypt.gensalt()));
         
         this.userRespRepository.save(users);
     }
 
     @Override
-    public void saveAll(List<UsersDTO> users) {
+    public void saveAll(List<UserRequest> users) {
         
         List<Users> u = new ArrayList<>();
         
-        for(UsersDTO user : users){
+        for(UserRequest user : users){
             
             Users us = MHelpers.modelMapper().map(user, Users.class);
             

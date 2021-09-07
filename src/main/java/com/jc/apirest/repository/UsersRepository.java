@@ -8,8 +8,6 @@ package com.jc.apirest.repository;
 import com.jc.apirest.entities.Users;
 import java.util.Optional;
 import javax.transaction.Transactional;
-import net.bytebuddy.asm.Advice;
-import org.springframework.data.domain.Page;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
