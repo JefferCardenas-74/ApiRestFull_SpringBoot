@@ -39,7 +39,11 @@ public class ApiController {
         return ResponseEntity.ok(this.userServices.findByUsername(username));
     }
     
-    /*cambio de prueba*/
+    @GetMapping(value = "/id/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> findById(@PathVariable("userId") int userId){
+        
+        return ResponseEntity.ok(this.userServices.findById(userId));
+    }
     
     
     
