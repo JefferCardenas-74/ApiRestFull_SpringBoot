@@ -1,4 +1,4 @@
-package com.ingeneo.app.utils.hash;
+package com.jc.apirest.utils.hash;
 
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;

@@ -7,6 +7,8 @@ package com.jc.apirest.controllers;
 
 import com.jc.apirest.dto.UserRequest;
 import com.jc.apirest.services.interfaces.IUsersServices;
+import com.jc.apirest.utils.exceptions.ApiUnprocessableEntity;
+import com.jc.apirest.validator.UserValidatorImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,9 @@ public class ApiController {
     @Autowired
     private IUsersServices userServices;
     
+    @Autowired
+    private UserValidatorImpl userValidator;
+    
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> index(){
         
@@ -49,7 +54,9 @@ public class ApiController {
     }
     
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> saveUser(@RequestBody UserRequest request){
+    public ResponseEntity<Object> saveUser(@RequestBody UserRequest request) throws ApiUnprocessableEntity{
+        
+        this.userValidator.validator(request);
         
         this.userServices.save(request);
         

@@ -5,13 +5,13 @@
  */
 package com.jc.apirest.services.implementation;
 
-import com.ingeneo.app.utils.hash.BCrypt;
+import com.jc.apirest.utils.hash.BCrypt;
 import com.jc.apirest.dto.UserRequest;
 import com.jc.apirest.dto.UsersDTO;
 import com.jc.apirest.entities.Users;
 import com.jc.apirest.repository.UsersRepository;
 import com.jc.apirest.services.interfaces.IUsersServices;
-import com.jc.apirest.utils.MHelpers;
+import com.jc.apirest.utils.helpers.MHelpers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

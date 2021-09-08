@@ -1,5 +1,5 @@
 
-package com.jc.apirest.utils;
+package com.jc.apirest.utils.helpers;
 
 import org.modelmapper.ModelMapper;
 
