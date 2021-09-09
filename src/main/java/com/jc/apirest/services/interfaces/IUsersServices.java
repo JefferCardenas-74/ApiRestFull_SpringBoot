@@ -22,6 +22,8 @@ public interface IUsersServices {
     
     void save(UserRequest user);
     
+    void update(UserRequest request, int userId);
+    
     void saveAll(List<UserRequest> users);
     
     void deleteById(int user_id);

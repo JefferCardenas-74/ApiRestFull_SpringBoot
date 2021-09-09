@@ -31,7 +31,7 @@ public class UserValidatorImpl implements UserValidator{
             this.message("El apellido es obligratorio");
         }
         
-        if(request.getLastname().length() < 6){
+        if(request.getLastname().length() < 3){
             this.message("El apellido es muy corto, debe tener por lo menos 6 caracteres");
         }
         
@@ -55,6 +55,14 @@ public class UserValidatorImpl implements UserValidator{
     private void message(String message) throws ApiUnprocessableEntity{
         
         throw new ApiUnprocessableEntity(message);
+    }
+    
+    public void validator(int id) throws ApiUnprocessableEntity{
+        
+        if(id < 0){
+            this.message("El numero debe ser positivo");
+        }
+
     }
     
 }

@@ -80,6 +80,29 @@ public class UsersImpl implements IUsersServices{
         
         this.userRespRepository.save(users);
     }
+    
+    @Override
+    public void update(UserRequest request, int userID){
+        
+        Optional<Users> users = this.userRespRepository.findById(userID);
+        
+        if(users.isPresent()){
+            Users user = users.get();
+            user.setFirstname(request.getFirstname());
+            user.setLastname(request.getLastname());
+            user.setUsername(request.getUsername());
+            
+            if(!request.getPassword().isEmpty()){
+                
+                user.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
+                
+            }
+            
+            this.userRespRepository.save(user);
+            
+        }
+        
+    }
 
     @Override
     public void saveAll(List<UserRequest> users) {
