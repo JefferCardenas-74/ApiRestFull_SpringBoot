@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @author Jeffer Cardenas <jecgdevp@gmail.com'>
  */
 @Component
-public class UserValidatorImpl implements UserValidator {
+public class UserValidatorImpl implements UserValidator{
 
     @Override
     public void validator(UserRequest request) throws ApiUnprocessableEntity {
@@ -29,6 +29,26 @@ public class UserValidatorImpl implements UserValidator {
         
         if(request.getLastname()== null || request.getLastname().isEmpty()){
             this.message("El apellido es obligratorio");
+        }
+        
+        if(request.getLastname().length() < 6){
+            this.message("El apellido es muy corto, debe tener por lo menos 6 caracteres");
+        }
+        
+        if(request.getUsername()== null || request.getUsername().isEmpty()){
+            this.message("El username es obligratorio");
+        }
+        
+        if(request.getUsername().length() < 6){
+            this.message("El username es muy corto, debe tener por lo menos 6 caracteres");
+        }
+        
+        if(request.getPassword()== null || request.getPassword().isEmpty()){
+            this.message("La contraseña es obligratorio");
+        }
+        
+        if(request.getPassword().length() < 6){
+            this.message("La contraseña es muy corta, debe tener por lo menos 6 caracteres");
         }
     }
     
